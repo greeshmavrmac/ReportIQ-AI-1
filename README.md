@@ -1,188 +1,77 @@
-# 🩺 ReportIQ AI
+# 🩺 ReportIQ AI (Medical Report Analysis Platform)
 
-### AI-Powered Medical Report Analysis & Intelligent Health Insights Platform
-
-ReportIQ AI is an intelligent healthcare application that analyzes medical reports using Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG). It helps users understand complex laboratory reports, identifies abnormal findings, provides personalized health insights, and answers follow-up questions through an interactive AI assistant.
+AI-powered platform to analyze medical reports and provide intelligent health insights.
 
 ---
 
-## 🚀 Key Features
+## Features | Tech Stack | Installation | Project Structure | Contributing | Author
 
-### 📄 AI Medical Report Analysis
-- Upload PDF medical reports for instant AI analysis
-- Detect abnormal laboratory values automatically
-- Generate easy-to-understand health summaries
-- Explain medical terminology in simple language
-
-### 🤖 Intelligent AI Assistant
-- Interactive chatbot for report-related questions
-- Context-aware conversations using Retrieval-Augmented Generation (RAG)
-- Personalized responses based on uploaded reports
-- Multi-turn conversation support
-
-### 📊 Smart Health Insights
-- Highlight abnormal biomarkers
-- Explain possible health conditions
-- Lifestyle and wellness recommendations
-- Follow-up monitoring suggestions
-
-### 💾 Session Management
-- Secure user authentication
-- Multiple report analysis sessions
-- Chat history persistence
-- Session recovery after login
-
-### 📁 Medical Report Processing
-- PDF upload support
-- Automatic text extraction
-- File validation
-- Medical content verification
-
-### 🔒 Security
-- Secure Supabase Authentication
-- Protected user sessions
-- Encrypted API communication
-- Secure cloud database
+## Usage Demo
 
 ---
 
-# 🛠 Tech Stack
+## 🌟 Features
 
-## Frontend
-- Streamlit
+### AI-based Architecture
+- Analysis Agent: AI-powered medical report analysis with contextual understanding and built-in medical knowledge.
+- Chat Agent: RAG-powered follow-up Q&A using FAISS vector search and HuggingFace embeddings.
+- Multi-model inference using Groq with automatic fallback (Primary → Secondary → Tertiary → Backup).
+- Chat Sessions: Create multiple report analysis sessions with report history stored securely in Supabase.
+- Report Sources: Upload your own medical PDF or use the built-in sample report for testing.
+- PDF Processing: Supports PDF uploads up to 20MB with automatic validation and text extraction.
+- Daily Analysis Limit: Configurable daily report analysis limit with sidebar usage tracking.
+- Secure Authentication: User login, signup, session management, and authentication powered by Supabase.
+- Session History: Access, switch, or delete previous analysis sessions with persistent chat history.
+- Modern Interface: Responsive Streamlit application with clean dashboard and interactive user experience.
 
-## Backend
-- Python
+---
 
-## AI & Machine Learning
+## 🛠️ Tech Stack
+
+### Frontend
+- Streamlit (1.42+)
+
+### AI / LLM
 - Groq API
-- Llama Models
+- Model Manager with Multi-model Fallback
+
+**Primary**
+- meta-llama/llama-4-maverick-17b-128e-instruct
+
+**Secondary**
+- llama-3.3-70b-versatile
+
+**Tertiary**
+- llama-3.1-8b-instant
+
+**Fallback**
+- llama3-70b-8192
+
+### AI Chat
 - LangChain
-- HuggingFace Embeddings
-- FAISS Vector Database
+- HuggingFace Embeddings (all-MiniLM-L6-v2)
+- FAISS Vector Store
 - Retrieval-Augmented Generation (RAG)
 
-## Database
-- Supabase PostgreSQL
+### Database
+- Supabase (PostgreSQL)
 
-## Authentication
+Tables:
+- users
+- chat_sessions
+- chat_messages
+
+### Authentication
 - Supabase Auth
 
-## PDF Processing
+### PDF Processing
 - PDFPlumber
-- FileType
+- filetype
 
----
-
-# ⚡ Installation
-
-## Clone Repository
-
-```bash
-git clone https://github.com/yourusername/ReportIQ-AI.git
-
-cd ReportIQ-AI
-```
-
-## Install Dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-## Configure Environment
-
-Create
-
-```
-.streamlit/secrets.toml
-```
-
-```toml
-SUPABASE_URL="YOUR_SUPABASE_URL"
-SUPABASE_KEY="YOUR_SUPABASE_KEY"
-GROQ_API_KEY="YOUR_GROQ_API_KEY"
-```
-
-## Setup Database
-
-Run the SQL script located in
-
-```
-public/db/script.sql
-```
-
-inside your Supabase SQL Editor.
-
-## Start Application
-
-```bash
-streamlit run src/main.py
-```
-
----
-
-# 📂 Project Structure
-
-```
-ReportIQ-AI
-│
-├── src
-│   ├── auth
-│   ├── agents
-│   ├── components
-│   ├── services
-│   ├── config
-│   ├── utils
-│   └── main.py
-│
-├── public
-│   └── db
-│
-├── requirements.txt
-├── README.md
-└── LICENSE
-```
-
----
-
-# 💡 Workflow
-
-1. Login or Register
-2. Create a New Analysis Session
-3. Upload a Medical Report
-4. AI Analyzes the Report
-5. Receive Personalized Health Insights
-6. Ask Follow-up Questions
-7. Save Session History
-
----
-
-# 🎯 Future Enhancements
-
-- Multi-language Support
-- OCR for Scanned Reports
-- Doctor Recommendation System
-- Medical Trend Visualization
-- Health Risk Prediction
-- Mobile Application
-- Voice Assistant
-
----
-
-# 👩‍💻 Developer
-
-**Veeramachineni Greeshma**
-
-B.Tech Data Science Student
-
----
-
-# 📜 License
-
-This project is released under the MIT License.
-
----
-
-## ⭐ If you found this project useful, consider giving it a star!
-
+### Libraries
+- LangChain
+- LangChain Community
+- LangChain HuggingFace
+- LangChain Text Splitters
+- sentence-transformers
+- FAISS (CPU)
