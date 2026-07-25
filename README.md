@@ -4,12 +4,6 @@ AI-powered platform to analyze medical reports and provide intelligent health in
 
 ---
 
-## Features | Tech Stack | Installation | Project Structure | Contributing | Author
-
-## Usage Demo
-
----
-
 ## 🌟 Features
 
 ### AI-based Architecture
