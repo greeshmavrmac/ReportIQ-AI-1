@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from supabase import create_client
 from datetime import datetime
@@ -11,7 +12,8 @@ class AuthService:
             # Initialize Supabase client directly
             # This ensures a fresh client for each session, preventing state leakage
             self.supabase = create_client(
-                st.secrets["SUPABASE_URL"], st.secrets["SUPABASE_KEY"]
+                os.getenv("SUPABASE_URL") or st.secrets["SUPABASE_URL"],
+                os.getenv("SUPABASE_KEY") or st.secrets["SUPABASE_KEY"]
             )
         except Exception as e:
             st.error(f"Failed to initialize services: {str(e)}")
